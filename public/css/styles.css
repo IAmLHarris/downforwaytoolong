@@ -16,11 +16,47 @@
     padding: 5px;
     border-radius: 3px;
   }
+  #deloExtra {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 }
 #top-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+#deloBlurb {
+  z-index: 3;
+}
+
+#deloAd {
+  background-color: aqua;
+  width: 100px;
+}
+
+#deloLinks {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+#deloLinks id {
+  background-color: aqua;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 2px 4px;
+  margin: 2px 20px;
+}
+
+#deloLinks id img {
+  max-width: 50px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #navHead {
@@ -31,7 +67,10 @@
   list-style: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+ul {
+  padding-left: 20px;
 }
 
 /* *,
