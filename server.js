@@ -14,6 +14,7 @@ const app = express();
 const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
+const bullRoute = require("./routes/bullRoute");
 const utilities = require("./utilities/");
 
 /* ***********************
@@ -33,6 +34,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 
 // Inventory routes
 app.use("/inv", inventoryRoute);
+
+app.use("/bull", bullRoute);
 
 app.get("/", function (req, res) {
   res.render("index", { title: "Home" });
