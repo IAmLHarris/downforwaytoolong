@@ -35,6 +35,7 @@ Util.buildClassificationGrid = async function (data) {
   if (data.length > 0) {
     grid = '<ul id="inv-display">';
     data.forEach((vehicle) => {
+      console.log(data);
       grid += "<li>";
       grid +=
         '<a href="../../inv/detail/' +
