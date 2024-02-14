@@ -81,6 +81,61 @@ Util.buildClassificationGrid = async function (data) {
   return grid;
 };
 
+/* **************************************
+ * Build the inventory showcase HTML
+ * ************************************ */
+Util.buildInventoryShowcase = async function (data) {
+  let showcase;
+
+  if (data.length > 0) {
+    showcase = '<ul id="inv-display">';
+    data.forEach((vehicle) => {
+      showcase += "<li>";
+      showcase +=
+        '<a href="../../inv/detail/' +
+        vehicle.inv_id +
+        '" title="View ' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        'details"><img src="' +
+        vehicle.inv_thumbnail +
+        '" alt="Image of ' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        ' on CSE Motors" /></a>';
+      showcase += '<div class="namePrice">';
+      showcase += "<hr />";
+      showcase += "<h2>";
+      showcase +=
+        '<a href="../../inv/detail/' +
+        vehicle.inv_id +
+        '" title="View ' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        ' details">' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        "</a>";
+      showcase += "</h2>";
+      showcase +=
+        "<span>$" +
+        new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
+        "</span>";
+      showcase += "</div>";
+      showcase += "</li>";
+    });
+    showcase += "</ul>";
+  } else {
+    showcase +=
+      '<p class="notice">Sorry, no matching vehicles could be found.</p>';
+  }
+  return showcase;
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
