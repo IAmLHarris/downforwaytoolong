@@ -5,19 +5,18 @@
 <form action="/account/register" method="post">
   <fieldset id="inputContainer">
     <label for="fname">First name:</label>
-    <input type="text" id="fname" name="fname" />
+    <input type="text" id="fname" name="account_firstname" />
     <label for="lname">Last name:</label>
-    <input type="text" id="lname" name="lname" />
+    <input type="text" id="lname" name="account_lastname" />
 
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email" />
+    <input type="text" id="email" name="account_email" />
     <label for="pword">Password:</label>
-    <input type="text" id="pword" name="pword" />
+    <input type="text" id="pword" name="account-password" />
     <p>
       All fields required. Password must be 12 characters long, with at least
       one capital, number, and special letter.
     </p>
-    <input type="submit" value="Login" />
-    <h1>No account? <a href="#">Lose!</a></h1>
+    <input type="submit" value="register" />
   </fieldset>
 </form>

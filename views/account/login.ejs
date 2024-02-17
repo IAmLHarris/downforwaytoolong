@@ -3,12 +3,13 @@
 <% } else { res.redirect('/') } %> <%- messages() %>
 
 <form id="loginForm" action="/account/login" method="post">
+  <!-- req.flash("notice", "This is a JUDGEMENT message."); -->
   <fieldset id="inputContainer">
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email" />
+    <input type="text" id="email" name="account_email" />
     <label for="pword">Password:</label>
-    <input type="text" id="pword" name="pword" />
+    <input type="text" id="pword" name="account_password" />
     <input type="submit" value="Login" />
-    <h1>No account? <a href="register">Lose!</a></h1>
+    <h1>No account? <a href="register">Register!</a></h1>
   </fieldset>
 </form>

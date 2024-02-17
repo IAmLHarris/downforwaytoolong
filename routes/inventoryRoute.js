@@ -28,4 +28,22 @@ router.post(
   utilities.handleErrors(invController.deleteByClassificationId)
 );
 
+// Route to make new inventory
+router.get("/", utilities.handleErrors(invController.createNewThing));
+
+router.get(
+  "/add-classification",
+  utilities.handleErrors(invController.addClassificationW4)
+);
+
+router.post(
+  "/add-classification",
+  utilities.handleErrors(invController.submitClassificationW4)
+);
+
+router.get(
+  "/add-inventory",
+  utilities.handleErrors(invController.addInventoryW4)
+);
+
 module.exports = router;

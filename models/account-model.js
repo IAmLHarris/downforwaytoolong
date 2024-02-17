@@ -22,7 +22,6 @@ async function registerAccount(
     return error.message;
   }
 }
-
 /* **********************
  *   Check for existing email
  * ********************* */

@@ -37,4 +37,35 @@ invCont.retrieveVehicleById = async function (req, res, next) {
   });
 };
 
+//makes management view
+invCont.createNewThing = async function (req, res, next) {
+  let nav = await utilities.getNav();
+
+  res.render("./inventory/management", {
+    title: "Management",
+
+    nav,
+  });
+};
+
+invCont.addClassificationW4 = async function (req, res, next) {
+  let nav = await utilities.getNav();
+
+  res.render("./inventory/add-classification", {
+    title: "Add Classification",
+
+    nav,
+  });
+};
+
+invCont.addInventoryW4 = async function (req, res, next) {
+  let nav = await utilities.getNav();
+
+  res.render("./inventory/add-inventory", {
+    title: "Add Inventory",
+
+    nav,
+  });
+};
+
 module.exports = invCont;
