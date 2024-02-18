@@ -4,22 +4,19 @@
 <h1><%= title %></h1>
 <% } else { res.redirect('/') } %> <%- messages() %>
 
-<form action="/inv/add-classification" method="post">
+<form action="/account/login" method="post">
   <fieldset id="inputContainer">
-    <label for="inv_make">Make:</label>
-    <input type="text" id="inv_make" name="inv_make" />
-    <label for="inv_model">Model:</label>
-    <input type="text" id="inv_model" name="inv_model" />
-
-    <label for="inv_year">Year:</label>
-    <input type="number" id="inv_year" name="inv_year" />
-    <label for="inv_description">Description:</label>
-    <textarea
+    <label for="classification_name">Make:</label>
+    <input
       type="text"
-      id="inv_description"
-      name="inv_description"
-    ></textarea>
-
+      pattern="[A-Za-z]+"
+      id="classification_name"
+      name="classification_name"
+    />
+    <p>
+      The new classification name cannot contain a space or special character of
+      any kind.
+    </p>
     <input type="submit" value="Register Into Database" />
   </fieldset>
 </form>

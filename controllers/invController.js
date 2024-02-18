@@ -48,7 +48,7 @@ invCont.createNewThing = async function (req, res, next) {
   });
 };
 
-invCont.addClassificationW4 = async function (req, res, next) {
+invCont.addClassification = async function (req, res, next) {
   let nav = await utilities.getNav();
 
   res.render("./inventory/add-classification", {
@@ -58,14 +58,70 @@ invCont.addClassificationW4 = async function (req, res, next) {
   });
 };
 
-invCont.addInventoryW4 = async function (req, res, next) {
+/* ****************************************
+ *  Process Classification Registration
+ * *************************************** */
+invCont.registerClassification = async function (req, res) {
   let nav = await utilities.getNav();
+  const { classification_name } = req.body;
+
+  const regResult = await invModel.registerClassification(classification_name);
+
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you\'ve registered ${classification_name}.`
+    );
+    res.status(201).render("account/login", {
+      title: "Registration",
+      nav,
+    });
+  } else {
+    req.flash("notice", "Sorry, the registration failed.");
+    res.status(501).render("./inventory/add-classification", {
+      title: "Registration",
+      nav,
+    });
+  }
+};
+
+invCont.addInventory = async function (req, res, next) {
+  let nav = await utilities.getNav();
+
+  let newthing = await utilities.giveClassifId();
 
   res.render("./inventory/add-inventory", {
     title: "Add Inventory",
-
+    newthing,
     nav,
   });
 };
+
+// /* ****************************************
+//  *  Process Inventory Registration
+//  * *************************************** */
+// invCont.registerInventory = async function (req, res) {
+//   let nav = await utilities.getNav();
+//   const { classification_name } = req.body;
+
+//   const regResult = await invModel.registerInventory(classification_name);
+
+//   if (regResult) {
+//     req.flash(
+//       "notice",
+//       `Congratulations, you\'ve registered ${classification_name}.`
+//     );
+//     res.status(201).render("account/login", {
+//       title: "Registration",
+//       nav,
+//     });
+//   } else {
+//     req.flash("notice", "Sorry, the registration failed.");
+//     res.status(501).render("./inventory/add-classification", {
+//       title: "Registration",
+//       nav,
+//     });
+//   }
+// };
 
 module.exports = invCont;

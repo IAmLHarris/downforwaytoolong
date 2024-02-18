@@ -27,6 +27,24 @@ Util.getNav = async function (req, res, next) {
   return list;
 };
 
+Util.giveClassifId = async function (req, res, next) {
+  let data = await invModel.getClassifications();
+  let list = "<select id='cars' name='cars'";
+
+  data.rows.forEach((row) => {
+    list += "<li>";
+    list +=
+      "<option value=" +
+      row.classification_id +
+      '">' +
+      row.classification_name +
+      "</option>";
+    list += "</li>";
+  });
+  list += "</select>";
+  return list;
+};
+
 /* **************************************
  * Build the classification view HTML
  * ************************************ */

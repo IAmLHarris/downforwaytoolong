@@ -42,10 +42,24 @@ async function retrieveVehicleById(inv_id) {
   }
 }
 
+/* *****************************
+ *   Register new classification
+ * *************************** */
+async function registerClassification(classification_name) {
+  try {
+    const sql =
+      "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *";
+    return await pool.query(sql, [classification_name]);
+  } catch (error) {
+    return error.message;
+  }
+}
+
 // who knew that exporting your functions generally leads to code functioning?
 // not me, because I forgot!
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
   retrieveVehicleById,
+  registerClassification,
 };

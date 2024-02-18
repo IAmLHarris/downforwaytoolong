@@ -33,17 +33,17 @@ router.get("/", utilities.handleErrors(invController.createNewThing));
 
 router.get(
   "/add-classification",
-  utilities.handleErrors(invController.addClassificationW4)
+  utilities.handleErrors(invController.addClassification)
 );
 
 router.post(
   "/add-classification",
-  utilities.handleErrors(invController.submitClassificationW4)
+  utilities.handleErrors(invController.registerClassification)
 );
 
 router.get(
   "/add-inventory",
-  utilities.handleErrors(invController.addInventoryW4)
+  utilities.handleErrors(invController.addInventory)
 );
 
 module.exports = router;
