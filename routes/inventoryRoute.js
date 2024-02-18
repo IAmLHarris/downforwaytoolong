@@ -31,11 +31,11 @@ router.post(
 // Route to make new inventory
 router.get("/", utilities.handleErrors(invController.createNewThing));
 
+// Add Classification Routes
 router.get(
   "/add-classification",
   utilities.handleErrors(invController.addClassification)
 );
-
 router.post(
   "/add-classification",
   utilities.handleErrors(invController.registerClassification)
@@ -45,5 +45,8 @@ router.get(
   "/add-inventory",
   utilities.handleErrors(invController.addInventory)
 );
-
+router.post(
+  "/add-inventory",
+  utilities.handleErrors(invController.registerInventory)
+);
 module.exports = router;

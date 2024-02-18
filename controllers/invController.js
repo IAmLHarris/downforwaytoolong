@@ -97,31 +97,28 @@ invCont.addInventory = async function (req, res, next) {
   });
 };
 
-// /* ****************************************
-//  *  Process Inventory Registration
-//  * *************************************** */
-// invCont.registerInventory = async function (req, res) {
-//   let nav = await utilities.getNav();
-//   const { classification_name } = req.body;
+/* ****************************************
+ *  Process inventory Registration
+ * *************************************** */
+invCont.registerinventory = async function (req, res) {
+  let nav = await utilities.getNav();
+  const { inv_make } = req.body;
 
-//   const regResult = await invModel.registerInventory(classification_name);
+  const regResult = await invModel.registerinventory(inv_make);
 
-//   if (regResult) {
-//     req.flash(
-//       "notice",
-//       `Congratulations, you\'ve registered ${classification_name}.`
-//     );
-//     res.status(201).render("account/login", {
-//       title: "Registration",
-//       nav,
-//     });
-//   } else {
-//     req.flash("notice", "Sorry, the registration failed.");
-//     res.status(501).render("./inventory/add-classification", {
-//       title: "Registration",
-//       nav,
-//     });
-//   }
-// };
+  if (regResult) {
+    req.flash("notice", `Congratulations, you\'ve registered ${inv_make}.`);
+    res.status(201).render("./inventory/add-inventory", {
+      title: "Registration",
+      nav,
+    });
+  } else {
+    req.flash("notice", "Sorry, the registration failed.");
+    res.status(501).render("./inventory/add-inventory", {
+      title: "Registration",
+      nav,
+    });
+  }
+};
 
 module.exports = invCont;
