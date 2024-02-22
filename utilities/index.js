@@ -30,14 +30,14 @@ Util.getNav = async function (req, res, next) {
 
 Util.giveClassifId = async function (req, res, next) {
   let data = await invModel.getClassifications();
-  let list = "<select id='cars' name='cars'";
+  let list = "<select id='classification_id' name='classification_id'";
 
   data.rows.forEach((row) => {
     list += "<li>";
     list +=
       "<option value=" +
       row.classification_id +
-      '">' +
+      ">" +
       row.classification_name +
       "</option>";
     list += "</li>";
