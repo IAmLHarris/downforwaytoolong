@@ -40,10 +40,10 @@ invCont.retrieveVehicleById = async function (req, res, next) {
 //makes management view
 invCont.createNewThing = async function (req, res, next) {
   let nav = await utilities.getNav();
-  const classificationSelect = await utilities.buildClassificationGrid();
+  let newthing = await utilities.giveClassifId();
   res.render("./inventory/management", {
     title: "Management",
-
+    newthing,
     nav,
   });
 };
