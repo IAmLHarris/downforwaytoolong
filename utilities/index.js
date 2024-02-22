@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model");
+const accountModel = require("../models/account-model");
 const Util = {};
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -185,4 +186,17 @@ Util.checkJWTToken = (req, res, next) => {
     next();
   }
 };
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next();
+  } else {
+    req.flash("notice", "Please log in.");
+    return res.redirect("/account/login");
+  }
+};
+
 module.exports = Util;

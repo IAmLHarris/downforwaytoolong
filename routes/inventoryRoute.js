@@ -49,4 +49,15 @@ router.post(
   "/add-inventory",
   utilities.handleErrors(invController.registerInventory)
 );
+
+router.get(
+  "/add-inventory",
+  utilities.handleErrors(invController.addInventory)
+);
+
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invController.getInventoryJSON)
+);
+
 module.exports = router;
